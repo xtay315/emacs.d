@@ -1,0 +1,11 @@
+(defun cyg2w32-shell-execute (operation document &optional parameters show-flag)
+    (if (string-equal operation "open")
+            (shell-command (concat "cygstart " (shell-quote-argument document)))))
+(defun cmd (&optional version)
+    "open cmd from current file directory"
+    (interactive "p")
+    (cond ((equal version 1) (setq version 110)))
+    (let ((file buffer-file-name))
+      (when (and file (file-name-directory file))
+        (shell-command (format "%s%s%s%s%s" "cygstart cmd /k \"set \\\"PATH=%W32_CMAKE%;%PATH%\\\"&call \\\"%VS" (number-to-string version)  "COMNTOOLS%vsvars32.bat\\\"&cd \\\"/d " (cygwin-convert-file-name-to-windows (file-name-directory file)) " \\\"\"")))))
+(provide 'init-cygwin-sp)

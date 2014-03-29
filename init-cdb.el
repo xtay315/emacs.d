@@ -1,0 +1,10 @@
+(if (or (eq system-type 'cygwin) (eq system-type 'windows-nt))
+    (load "cdb-gud")
+    )
+(defadvice gud-cdb-find-file (before danie-gud-cdb-find-file (f) activate)
+  "corret the path if window-type is cygwin"
+  (if (eq system-type 'cygwin)
+      (setq f (cygwin-convert-file-name-from-windows f))
+    )
+  )
+(provide 'init-cdb)
