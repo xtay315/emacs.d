@@ -52,6 +52,7 @@
         (speedbar-mode . normal)
         (magit-commit-mode . normal)
         (ibuffer-mode . normal)
+        (occur-mode . emacs)
         )
       do (evil-set-initial-state mode state))
 
@@ -116,6 +117,8 @@
 (define-key minibuffer-local-map (kbd "M-k") 'abort-recursive-edit)
 (define-key minibuffer-local-map (kbd ",k") 'abort-recursive-edit)
 (define-key evil-insert-state-map (kbd "M-j") 'my-yas-expand)
+(define-key evil-normal-state-map (kbd "K") 'scroll-half-window-backward)
+(define-key evil-normal-state-map (kbd "J") 'scroll-half-window-forward)
 
 (defun evilcvn-change-symbol-in-defun ()
   "mark the region in defun (definition of function) and use string replacing UI in evil-mode
@@ -147,6 +150,7 @@ to replace the symbol under cursor"
   "pp" 'evil-scroll-page-up
   "nn" 'evil-scroll-page-down
   "ff" 'toggle-full-window ;; I use WIN+F in i3
+  "fn" 'flymake-goto-next-error
   "px" 'paste-from-x-clipboard
   ;; "ci" 'evilnc-comment-or-uncomment-lines
   ;; "cl" 'evilnc-comment-or-uncomment-to-the-line
@@ -161,6 +165,7 @@ to replace the symbol under cursor"
   "W" 'save-some-buffers
   "K" 'kill-buffer-and-window ;; "k" is preserved to replace "C-g"
   "it" 'issue-tracker-increment-issue-id-under-cursor
+  "io" 'isearch-occur
   "hh" 'highlight-symbol-at-point
   "hn" 'highlight-symbol-next
   "hp" 'highlight-symbol-prev
@@ -205,7 +210,7 @@ to replace the symbol under cursor"
   "gf" 'helm-gtags-find-tag;;gtags-find-tag-from-here
   "gp" 'helm-gtags-pop-stack;;gtags-pop-stack
   "gr" 'helm-gtags-find-rtag;;gtags-find-rtag
-  "fb" 'flyspell-buffer
+  "fb" 'lyspell-buffer
   "gy" 'helm-gtags-find-symbol;;gtags-find-symbol
   "gc" 'gtags-create-or-update
   "gl" 'helm-gtags-find-files

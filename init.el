@@ -57,6 +57,7 @@
 (require 'init-proxies)
 (require 'init-dired)
 (require 'init-isearch)
+(require 'init-highlight-symbol)
 (require 'init-uniquify)
 (require 'init-ibuffer)
 (require 'init-flymake)
@@ -142,7 +143,7 @@
 (require 'init-twittering-mode)
 (require 'init-weibo)
 ;; itune cannot play flac, so I use mplayer+emms instead (updated, use mpd!)
-(if (not (boundp 'light-weight-emacs)) (if *is-a-mac* (require 'init-emms)) )
+;;(if (not (boundp 'light-weight-emacs)) (if *is-a-mac* (require 'init-emms)) )
 (require 'init-lua-mode)
 (require 'init-doxygen)
 (require 'init-workgroups)
@@ -152,8 +153,8 @@
 (require 'init-sr-speedbar)
 (require 'init-smartparens)
 ;; Choose either auto-complete or company-mode by commenting one of below two lines!
-;; (require 'init-auto-complete) ; after init-yasnippeta to override TAB
-(require 'init-company)
+(require 'init-auto-complete) ; after init-yasnippeta to override TAB
+;;(require 'init-company)
 (require 'init-stripe-buffer)
 (require 'init-popwin)
 (require 'init-elnode)

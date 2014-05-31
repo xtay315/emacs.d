@@ -1,5 +1,6 @@
 ;; @see http://cx4a.org/software/auto-complete/manual.html
 (require 'auto-complete-config)
+(setq ac-source-yasnippet nil)
 (global-auto-complete-mode t)
 (setq ac-expand-on-auto-complete nil)
 (setq ac-auto-start nil)
@@ -28,8 +29,11 @@
 
 ;; clang stuff
 ;; @see https://github.com/brianjcj/auto-complete-clang
+;;use g++ -v -x c++ -E - <<<
 (defun my-ac-cc-mode-setup ()
   (require 'auto-complete-clang)
+  (setq ac-fuzzy-enable t)
+  (setq ac-fuzzy-enable t)
   (when (and (not *cygwin*) (not *win32*))
     ; I don't do C++ stuff with cygwin+clang
     (setq ac-sources (append '(ac-source-clang) ac-sources))

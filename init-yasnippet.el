@@ -1,5 +1,6 @@
 (require 'yasnippet)
-
+;;(defalias 'yas/get-snippet-tables 'yas--get-snippet-tables)
+;;(defalias 'yas/table-hash 'yas--table-hash)
 ;; my private snippets
 (setq my-yasnippets (expand-file-name "~/my-yasnippets"))
 (if (and  (file-exists-p my-yasnippets) (not (member my-yasnippets yas-snippet-dirs)))

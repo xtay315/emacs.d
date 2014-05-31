@@ -36,6 +36,14 @@
     (delete-other-windows)
     (funcall (split-window-func-with-other-buffer 'split-window-vertically))))
 
+(defun window-half-height ()
+  (max 1 (/ (1- (window-height (selected-window))) 2)))
+(defun scroll-half-window-forward ()
+  (interactive)
+  (scroll-up (window-half-height)))
+(defun scroll-half-window-backward ()
+  (interactive)
+  (scroll-down (window-half-height)))
 (global-set-key "\C-x|" 'split-window-horizontally-instead)
 (global-set-key "\C-x_" 'split-window-vertically-instead)
 
